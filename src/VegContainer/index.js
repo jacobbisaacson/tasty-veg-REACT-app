@@ -87,6 +87,35 @@ export default class VegContainer extends Component {
     })
   }
 
+  updateVeg = async (updatedVegInfo) => {
+    const url = process.env.REACT_APP_API_URL + "/api/v1/vegs/" + this.state.idOfVegToEdit
+    try {
+      const updateVegResponse = await fetch(url, {
+        method: 'PUT',
+        body: JSON.stringify(updatedVegInfo), 
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      console.log("updateVegResponse", updateVegResponse)
+      const updateVegJson = await updateVegResponse.json()
+      console.log("updateVegJson", updateVegJson);
+
+      if(updateVegResponse.status === 200) {
+        const vegs = this.state.vegs
+        const indexOfVegBeingUpdated = vegs.findIndex(veg => veg.id === this.state.idOfVegToEdit)
+        vegs[indexOfVegBeingUpdated] = updateVegJson.data
+        this.setState({
+          vegs: vegs,
+          idOfVegToEdit: -1
+        })
+      }
+
+    } catch(err) {
+      console.error("Error updating dog info")
+      console.error(err)
+    }
+  }
   render() {
     return(
       <React.Fragment>
@@ -101,6 +130,7 @@ export default class VegContainer extends Component {
           && 
           <EditVegModal 
             vegToEdit={this.state.vegs.find((veg) => veg.id === this.state.idOfVegToEdit)}
+            updateVeg={this.updateVeg}
           /> 
         }
       </React.Fragment>

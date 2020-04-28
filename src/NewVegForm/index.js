@@ -51,7 +51,7 @@ export default class NewVegForm extends Component {
           />
           <Label>Is it Tasty?:</Label>
           <Form.Input 
-            type="checkbox"
+            type="text"
             name="isTasty"
             value={this.state.isTasty}
             // placeholder="Is it tasty?"

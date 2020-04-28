@@ -18,11 +18,17 @@ export default class EditVegModal extends Component {
       [event.target.name]: event.target.value
     })
   }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.updateVeg(this.state)
+  }
+
   render() {
     return(
       <Segment> 
         <h3>Edit this VEG!</h3>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Label>Name:</Label>
           <Form.Input 
             type="text"
@@ -41,7 +47,7 @@ export default class EditVegModal extends Component {
           />
           <Label>Tasty?:</Label>
           <Form.Input 
-            type="checkbox"
+            type="text"
             name="isTasty"
             value={this.state.isTasty}
             onChange={this.handleChange}
