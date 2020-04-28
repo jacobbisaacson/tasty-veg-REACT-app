@@ -30,10 +30,16 @@ export default class VegContainer extends Component {
     }
   }
 
+
+  createVeg = (vegToAdd) => {
+    console.log("here's the veg to create");
+    console.log(vegToAdd);
+  }
+
 	render() {
 		return(
       <React.Fragment>
-        <NewVegForm />
+        <NewVegForm createVeg={this.createVeg} />
         <VegList vegs={this.state.vegs} />
       </React.Fragment>
 

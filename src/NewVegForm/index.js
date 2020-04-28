@@ -18,13 +18,18 @@ export default class NewVegForm extends Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.createVeg(this.state)
+  }
+
   render() {
     console.log("this.state in render");
     console.log(this.state);
     return (
       <Segment>
         <h4>Add New Veggie!:</h4>
-        <Form>
+        <Form onSubmit={this.handleSubmit}>
           <Label>Name:</Label>
           <Form.Input 
             type="text"
