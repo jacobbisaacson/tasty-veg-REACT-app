@@ -19,6 +19,8 @@ export default class NewVegForm extends Component {
   }
 
   render() {
+    console.log("this.state in render");
+    console.log(this.state);
     return (
       <Segment>
         <h4>Add New Veggie!:</h4>
@@ -34,14 +36,14 @@ export default class NewVegForm extends Component {
           <Label>Color:</Label>
           <Form.Input 
             type="text"
-            name="breed"
+            name="color"
             value={this.state.color}  
             placeholder="Enter veggie color"
             onChange={this.handleChange}
           />
           <Label>Is it Tasty?:</Label>
           <Form.Input 
-            type="boolean"
+            type="checkbox"
             name="isTasty"
             value={this.state.isTasty}
             placeholder="Is it tasty?"
