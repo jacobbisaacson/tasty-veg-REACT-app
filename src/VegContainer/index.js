@@ -48,7 +48,7 @@ export default class VegContainer extends Component {
         })
       }
     } catch(err) {
-      console.error("error deleting veg")
+      console.error("error DELETING veg")
       console.error(err)
     }
   }
@@ -75,7 +75,7 @@ export default class VegContainer extends Component {
         })
       }
     } catch(err) {
-      console.error("error adding veg")
+      console.error("error CREATING veg")
       console.error(err)
     }
   }
@@ -112,10 +112,17 @@ export default class VegContainer extends Component {
       }
 
     } catch(err) {
-      console.error("Error updating dog info")
+      console.error("Error UPDATING veg info")
       console.error(err)
     }
   }
+
+  closeModal = () => {
+    this.setState({
+      idOfVegToEdit: -1
+    })
+  }
+
   render() {
     return(
       <React.Fragment>
@@ -131,6 +138,7 @@ export default class VegContainer extends Component {
           <EditVegModal 
             vegToEdit={this.state.vegs.find((veg) => veg.id === this.state.idOfVegToEdit)}
             updateVeg={this.updateVeg}
+            closeModal={this.closeModal}
           /> 
         }
       </React.Fragment>

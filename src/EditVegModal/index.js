@@ -25,9 +25,15 @@ export default class EditVegModal extends Component {
   }
 
   render() {
+    const linkStyle = {
+      cursor: "pointer",
+      color: "blue",
+      textDecoration: "underline"
+    }
     return(
       <Segment> 
         <h3>Edit this VEG!</h3>
+        <p style={linkStyle} onClick={this.props.closeModal}><small>Close Modal</small></p>
         <Form onSubmit={this.handleSubmit}>
           <Label>Name:</Label>
           <Form.Input 
