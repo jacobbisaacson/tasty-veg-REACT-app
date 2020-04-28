@@ -96,7 +96,13 @@ export default class VegContainer extends Component {
           deleteVeg={this.deleteVeg}
           editVeg={this.editVeg}
         />
-        { this.state.idOfVegToEdit !== -1 && <EditVegModal /> }
+        { 
+          this.state.idOfVegToEdit !== -1 
+          && 
+          <EditVegModal 
+            vegToEdit={this.state.vegs.find((veg) => veg.id === this.state.idOfVegToEdit)}
+          /> 
+        }
       </React.Fragment>
 		)
 	}

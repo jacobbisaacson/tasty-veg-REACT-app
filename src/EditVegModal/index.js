@@ -4,10 +4,12 @@ import { Form, Button, Label, Segment } from 'semantic-ui-react'
 export default class EditVegModal extends Component {
   constructor(props) {
     super(props)
+    console.log("props in constructor in editvegmodal");
+    console.log(props);
     this.state = {
-      name: '',
-      color: '',
-      isTasty: ''
+      name: props.vegToEdit.name,
+      color: props.vegToEdit.color,
+      isTasty: props.vegToEdit.isTasty
     }
   }
 	render() {
