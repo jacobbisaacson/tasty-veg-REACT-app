@@ -25,14 +25,14 @@ export default class VegContainer extends Component {
         vegs: vegsJson.data
       })
     } catch(err) {
-      console.error("Error getting dog data.", err)
+      console.error("Error getting veggie data.", err)
     }
   }
 
 	render() {
 		return(
       <React.Fragment>
-			<VegList />
+			<VegList vegs={this.state.vegs} />
       </React.Fragment>
 
 		)
