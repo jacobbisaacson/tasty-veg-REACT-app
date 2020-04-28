@@ -26,7 +26,28 @@ export default class VegContainer extends Component {
         vegs: vegsJson.data
       })
     } catch(err) {
-      console.error("Error getting veggie data.", err)
+      console.error("error getting veg")
+      console.error(err)
+    }
+  }
+
+  deleteVeg = async (idOfVegToDelete) => {
+    const url = process.env.REACT_APP_API_URL + "/api/v1/vegs/" + idOfVegToDelete
+    try {
+      const deleteVegResponse = await fetch(url, {
+        method: 'DELETE'
+      })
+      console.log("deleteVegResponse", deleteVegResponse);
+      const deleteVegJson = await deleteVegResponse.json()
+      console.log("deleteVegJson", deleteVegJson);
+      if(deleteVegResponse.status === 200) {
+        this.setState({
+          vegs: this.state.vegs.filter(veg => veg.id !== idOfVegToDelete)
+        })
+      }
+    } catch(err) {
+      console.error("error deleting veg")
+      console.error(err)
     }
   }
 
@@ -52,7 +73,8 @@ export default class VegContainer extends Component {
         })
       }
     } catch(err) {
-      console.log("error adding veg", err);
+      console.error("error adding veg")
+      console.error(err)
     }
   }
 
@@ -60,9 +82,11 @@ export default class VegContainer extends Component {
 		return(
       <React.Fragment>
         <NewVegForm createVeg={this.createVeg} />
-        <VegList vegs={this.state.vegs} />
+        <VegList 
+          vegs={this.state.vegs}
+          deleteVeg={this.deleteVeg} 
+        />
       </React.Fragment>
-
 		)
 	}
 }

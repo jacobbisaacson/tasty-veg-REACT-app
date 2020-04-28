@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 export default function VegList(props) {
   const vegs = props.vegs.map(veg => {
@@ -15,6 +15,14 @@ export default function VegList(props) {
           <Card.Description>
             {veg.name} is a {veg.color} vegetable
           </Card.Description>
+        </Card.Content>
+        <Card.Content textAlign={"center"}>
+          <Button 
+            basic color='red'
+            onClick={ () => props.deleteVeg(veg.id) }
+          >
+            Delete {veg.name}
+          </Button>
         </Card.Content>
       </Card>
     )
