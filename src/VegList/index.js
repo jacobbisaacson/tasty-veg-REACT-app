@@ -18,10 +18,18 @@ export default function VegList(props) {
         </Card.Content>
         <Card.Content textAlign={"center"}>
           <Button 
-            basic color='red'
+            basic 
+            color='red'
             onClick={ () => props.deleteVeg(veg.id) }
           >
             Delete {veg.name}
+          </Button>
+          <Button
+            basic 
+            color='green'
+            onClick={ () => props.editVeg(veg.id) }
+          >
+            Edit {veg.name}
           </Button>
         </Card.Content>
       </Card>

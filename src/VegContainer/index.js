@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import VegList from '../VegList'
 import NewVegForm from '../NewVegForm'
+import EditVegModal from '../EditVegModal'
 
 export default class VegContainer extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			vegs: []
+			vegs: [],
+      idOfVegToEdit: -1
 		}
 	}
 
@@ -78,14 +80,23 @@ export default class VegContainer extends Component {
     }
   }
 
+  editVeg = (idOfVegToEdit) => {
+    console.log("trying to edit veg with id: ", idOfVegToEdit);
+    this.setState({
+      idOfVegToEdit: idOfVegToEdit
+    })
+  }
+
 	render() {
 		return(
       <React.Fragment>
         <NewVegForm createVeg={this.createVeg} />
         <VegList 
           vegs={this.state.vegs}
-          deleteVeg={this.deleteVeg} 
+          deleteVeg={this.deleteVeg}
+          editVeg={this.editVeg}
         />
+        { this.state.idOfVegToEdit !== -1 && <EditVegModal /> }
       </React.Fragment>
 		)
 	}

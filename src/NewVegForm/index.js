@@ -54,7 +54,7 @@ export default class NewVegForm extends Component {
             type="checkbox"
             name="isTasty"
             value={this.state.isTasty}
-            placeholder="Is it tasty?"
+            // placeholder="Is it tasty?"
             onChange={this.handleChange}
           />
           <Button type="Submit">Create Veggie!</Button>
