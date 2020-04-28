@@ -12,8 +12,14 @@ export default class EditVegModal extends Component {
       isTasty: props.vegToEdit.isTasty
     }
   }
-	render() {
-		return(
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+  render() {
+    return(
       <Segment> 
         <h3>Edit this VEG!</h3>
         <Form>
@@ -23,24 +29,27 @@ export default class EditVegModal extends Component {
             name="name"
             value={this.state.name}
             placeholder="New name:"
+            onChange={this.handleChange}
           />
           <Label>Color:</Label>
           <Form.Input 
             type="text"
             name="color"
-            value={this.state.color}  
+            value={this.state.color}
             placeholder="New color:"
+            onChange={this.handleChange}
           />
           <Label>Tasty?:</Label>
           <Form.Input 
             type="checkbox"
             name="isTasty"
-            value={this.state.isTasty}         
+            value={this.state.isTasty}
+            onChange={this.handleChange}
             // placeholder="Enter an owner name"
           />
           <Button type="Submit">Edit this Veg!</Button>
         </Form>
       </Segment>
     )    
-	}
+  }
 }

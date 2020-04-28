@@ -4,13 +4,13 @@ import NewVegForm from '../NewVegForm'
 import EditVegModal from '../EditVegModal'
 
 export default class VegContainer extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			vegs: [],
+  constructor(props) {
+    super(props)
+    this.state = {
+      vegs: [],
       idOfVegToEdit: -1
-		}
-	}
+    }
+  }
 
   componentDidMount() {
     this.getVegs()
@@ -87,8 +87,8 @@ export default class VegContainer extends Component {
     })
   }
 
-	render() {
-		return(
+  render() {
+    return(
       <React.Fragment>
         <NewVegForm createVeg={this.createVeg} />
         <VegList 
@@ -104,6 +104,6 @@ export default class VegContainer extends Component {
           /> 
         }
       </React.Fragment>
-		)
-	}
+    )
+  }
 }
