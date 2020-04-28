@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import VegList from '../VegList'
 
 export default class VegContainer extends Component {
 	constructor(props) {
@@ -14,18 +15,25 @@ export default class VegContainer extends Component {
 
   getVegs = async () => {
     try {
+      // load dogs from the dog index route in our API
+      // note: be sure to add a / to the end of this url
+      // Flask/Flask-Cors expects this!!!
       const url = process.env.REACT_APP_API_URL + "/api/v1/vegs/"
       const vegsResponse = await fetch(url)
       const vegsJson = await vegsResponse.json()
-      console.log(vegsJson);
+      this.setState({
+        vegs: vegsJson.data
+      })
     } catch(err) {
-      console.error("error getting veg data", err);
+      console.error("Error getting dog data.", err)
     }
   }
 
 	render() {
 		return(
-			<h2>Veg Container</h2>
+      <React.Fragment>
+			<VegList />
+      </React.Fragment>
 
 		)
 	}
