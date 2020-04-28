@@ -21,6 +21,11 @@ export default class NewVegForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.createVeg(this.state)
+    this.setState({
+      name: '',
+      color: '',
+      isTasty: ''
+    })
   }
 
   render() {

@@ -46,6 +46,11 @@ export default class VegContainer extends Component {
       console.log("createVegResponse", createVegResponse);
       const createVegJson = await createVegResponse.json()
       console.log("heres adding veg info", createVegJson);
+      if(createVegResponse.status === 201) {
+        this.setState({
+          vegs: [...this.state.vegs, createVegJson.data]
+        })
+      }
     } catch(err) {
       console.log("error adding veg", err);
     }
