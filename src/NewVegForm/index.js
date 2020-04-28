@@ -24,8 +24,6 @@ export default class NewVegForm extends Component {
   }
 
   render() {
-    console.log("this.state in render");
-    console.log(this.state);
     return (
       <Segment>
         <h4>Add New Veggie!:</h4>

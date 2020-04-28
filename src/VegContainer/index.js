@@ -31,9 +31,24 @@ export default class VegContainer extends Component {
   }
 
 
-  createVeg = (vegToAdd) => {
+  createVeg = async (vegToAdd) => {
     console.log("here's the veg to create");
     console.log(vegToAdd);
+    try {
+      const url = process.env.REACT_APP_API_URL + "/api/v1/vegs/"
+      const createVegResponse = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(vegToAdd)
+      })
+      console.log("createVegResponse", createVegResponse);
+      const createVegJson = await createVegResponse.json()
+      console.log("heres adding veg info", createVegJson);
+    } catch(err) {
+      console.log("error adding veg", err);
+    }
   }
 
 	render() {
