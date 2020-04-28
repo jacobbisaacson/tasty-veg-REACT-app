@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import VegList from '../VegList'
+import NewVegForm from '../NewVegForm'
 
 export default class VegContainer extends Component {
 	constructor(props) {
@@ -32,7 +33,8 @@ export default class VegContainer extends Component {
 	render() {
 		return(
       <React.Fragment>
-			<VegList vegs={this.state.vegs} />
+        <NewVegForm />
+        <VegList vegs={this.state.vegs} />
       </React.Fragment>
 
 		)

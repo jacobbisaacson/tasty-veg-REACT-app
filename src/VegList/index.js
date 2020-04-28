@@ -5,7 +5,7 @@ export default function VegList(props) {
   console.log("props in veg list", props);
   const vegs = props.vegs.map(veg => {
     return(
-      <Card key={veg.id}>
+      <Card key={veg.id} color={"blue"}>
         <Card.Content textAlign={"center"}>        
           <Card.Header>
             {veg.name}
